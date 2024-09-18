@@ -9,10 +9,8 @@ const AppLayout = () => {
         <>
             <div className='max-w-7xl mx-auto' id='layout'>
                 <Header />
+                <Body />
             </div>
-            <hr className='shadow-2xl border border-b-2 mb-4'></hr>
-            <h1 className='font-mono text-3xl font-bold text-center mb-4 underline'>Restaurants</h1>
-            <Body />
         </>
     )
 }
