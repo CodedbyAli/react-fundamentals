@@ -31,7 +31,6 @@ const Body = () => {
 
 return restaurantList.length === 0 ? (<Shimmer />) : (
     <>
-        <hr className='shadow-2xl border border-b-2 mb-4'></hr>
         <h1 className='font-mono text-3xl font-bold text-center mb-4 underline'>Restaurants</h1>
         <div className="flex justify-between" >
             <div className="flex items-center">

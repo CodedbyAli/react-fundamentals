@@ -1,5 +1,4 @@
 const RestaurantCard = (props) => {
-    console.log(props);
     const {name,cuisines,avgRating,totalRatingsString,cloudinaryImageId,sla} = props.resList.info
     return(
     <div className='w-full border rounded-xl mx-auto hover:shadow-xl cursor-pointer'>
