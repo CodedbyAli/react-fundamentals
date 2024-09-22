@@ -1,8 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
-import { resList } from "../utils/restaurantList";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { RES_API } from "../utils/constants";
 
 const Body = () => {
 
@@ -18,7 +18,7 @@ const Body = () => {
     }
 
     const fetchData = async () => {
-        const data = await fetch('https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6110886&lng=77.2345184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
+        const data = await fetch(RES_API);
         json = await data.json();
 
         setRestaurantList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);

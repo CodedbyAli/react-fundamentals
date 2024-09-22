@@ -1,22 +1,13 @@
-import { useEffect,useState } from "react"
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import { MENU_IMG } from "../utils/constants";
 
 const RestaurantMenu = () => {
 
-    const [resInfo, setResInfo] = useState(null);
-
     const params = useParams();
     
-    useEffect(()=>{
-        fetchMenu();
-    },[]);
-    
-    const fetchMenu = async () => {
-        const data = await fetch('https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6110886&lng=77.2345184&restaurantId='+params.resId)
-        const json = await data.json();
-        setResInfo(json?.data);
-    }
+    const resInfo = useRestaurantMenu(params.resId);
 
     if (resInfo === null) return <Shimmer /> 
 
@@ -51,7 +42,7 @@ const RestaurantMenu = () => {
                                     <p className="mt-2 text-black/60">{item?.card?.info?.description}</p>
                                 </div>
                                 <div>
-                                    <img className="w-40 h-40 rounded-lg object-cover" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${item.card.info.imageId}`} />
+                                    <img className="w-40 h-40 rounded-lg object-cover" src={`${MENU_IMG}/${item.card.info.imageId}`} />
                                 </div>
                             </div>
                         ))}
