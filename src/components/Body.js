@@ -2,7 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { resList } from "../utils/restaurantList";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -10,6 +10,7 @@ const Body = () => {
     const [filteredRestaurant,setFilteredRestaurant] = useState([]);
     const [isClicked,setIsClicked] = useState(false);
     const [searchText,setSearchText] = useState('');
+
 
     function HandleSearch (){
         let searchedRestaurants = restaurantList.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()))
@@ -55,7 +56,9 @@ return restaurantList.length === 0 ? (<Shimmer />) : (
             <div className='grid grid-cols-4 gap-6'>
             {
                 filteredRestaurant.map((restaurant) => (
-                    <RestaurantCard key={restaurant.info.id} resList={restaurant} />
+                    <Link key={restaurant.info.id} to={`restaurant/${restaurant.info.id}`}>
+                        <RestaurantCard  resList={restaurant} />
+                    </Link>
                 ))
             }
             </div>
