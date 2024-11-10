@@ -3,7 +3,7 @@ import { RES_IMG } from "../utils/constants";
 const RestaurantCard = (props) => {
     const {name,cuisines,avgRating,totalRatingsString,cloudinaryImageId,sla} = props.resList.info
     return(
-    <div className='w-full border rounded-xl mx-auto hover:shadow-xl cursor-pointer'>
+    <div className='w-full border rounded-xl mx-auto cursor-pointer hover:scale-95 transition ease-in-out'>
         <div>
             {/* <img className='rounded-t-xl mb-2' src={imgSrc ? 'https://place-hold.it/400x225' : imgSrc} /> */}
             <img className='rounded-t-xl mb-2 w-full h-[200px] object-cover' src={`${RES_IMG}/${cloudinaryImageId}`} />
