@@ -7,16 +7,20 @@ import Contact from './components/Contact';
 import { createBrowserRouter, RouterProvider, Outlet} from 'react-router-dom';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
 
 const About = lazy(() => import('./components/About'));
 
 const AppLayout = () => {
     return(
         <>
-            <div className='max-w-7xl mx-auto' id='layout'>
-                <Header />
-                <Outlet />
-            </div>
+            <Provider store={appStore}>
+                <div className='max-w-7xl mx-auto' id='layout'>
+                    <Header />
+                    <Outlet />
+                </div>
+            </Provider>
         </>
     )
 }

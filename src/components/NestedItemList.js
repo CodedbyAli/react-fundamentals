@@ -17,7 +17,8 @@ const NestedItemList = ({itemCards}) => {
                             </div>
                             <p className="mt-2 text-black/60">{item?.card?.info?.description}</p>
                         </div>
-                        <div className="w-2/12">
+                        <div className="w-2/12 relative">
+                            <button className="bg-black text-white rounded-lg absolute px-4 py-2">Add +</button>
                             <img className="w-40 h-40 rounded-lg object-cover" src={`${MENU_IMG}/${item?.card?.info?.imageId}`} />
                         </div>
                     </div>
