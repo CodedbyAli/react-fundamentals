@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Logo = () => (
@@ -6,16 +7,21 @@ const Logo = () => (
     </div>
 )
 
-const NavItems = () => (
-    <div>
+const NavItems = () => {
+
+    const cart = useSelector((store) => store.cart.items);
+    console.log(cart);
+
+    return <div>
         <ul className='flex font-mono font-bold text-xl space-x-4'>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/about'>AboutUs</Link></li>
+            <li><Link to='/cart'>Cart-({cart.length} Items)</Link></li>
             <li><Link to='/contact'>Contact</Link></li>
             <li>Profile</li>
         </ul>
     </div>
-)
+}
 
 const Header = () => (
     <>

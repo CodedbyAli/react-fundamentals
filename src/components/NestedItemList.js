@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice.js"
 import{ MENU_IMG } from "../utils/constants";
 
 const NestedItemList = ({itemCards}) => {
     // console.log(itemCards);
+    
+    const dispatch = useDispatch();
+    const handleAddItem = (item) => {
+        dispatch(addItem(item));
+    }
+
     return (
         <>
             {itemCards.map((item) => (
@@ -18,7 +26,9 @@ const NestedItemList = ({itemCards}) => {
                             <p className="mt-2 text-black/60">{item?.card?.info?.description}</p>
                         </div>
                         <div className="w-2/12 relative">
-                            <button className="bg-black text-white rounded-lg absolute px-4 py-2">Add +</button>
+                            <button className="bg-black text-white rounded-lg absolute px-4 py-2"
+                            onClick={()=>handleAddItem(item)}
+                            >Add +</button>
                             <img className="w-40 h-40 rounded-lg object-cover" src={`${MENU_IMG}/${item?.card?.info?.imageId}`} />
                         </div>
                     </div>
