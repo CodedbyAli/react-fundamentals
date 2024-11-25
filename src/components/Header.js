@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Logo = () => (
     <div>
@@ -7,30 +8,29 @@ const Logo = () => (
     </div>
 )
 
-const NavItems = () => {
+const Header = () => {
 
     const cart = useSelector((store) => store.cart.items);
-    console.log(cart);
+    const [isLoggedIn,setIsLoggedIn] = useState(false);
 
-    return <div>
-        <ul className='flex font-mono font-bold text-xl space-x-4'>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/about'>AboutUs</Link></li>
-            <li><Link to='/cart'>Cart-({cart.length} Items)</Link></li>
-            <li><Link to='/contact'>Contact</Link></li>
-            <li>Profile</li>
-        </ul>
-    </div>
-}
-
-const Header = () => (
+    return (
     <>
         <div className='flex items-center justify-between'>
             <Logo />
-            <NavItems />
+            <div>
+                <ul className='flex font-mono font-bold text-xl space-x-4'>
+                    <li><Link to='/'>Home</Link></li>
+                    <li><Link to='/about'>AboutUs</Link></li>
+                    <li><Link to='/cart'>Cart-({cart.length} Items)</Link></li>
+                    <li><button onClick={() => setIsLoggedIn(!isLoggedIn)}>{isLoggedIn ? 'Logout' : 'Login'}</button></li>
+                    <li><Link to='/contact'>Contact</Link></li>
+                    <li>Profile</li>
+                </ul>
+            </div>
         </div>
         <hr className='shadow-2xl border border-b-2 mb-4'></hr>
     </>
-)
+    )
+}
 
 export default Header;

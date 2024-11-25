@@ -2,37 +2,75 @@ import Contact from "../Contact";
 import { render,screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-test('Should load contact component', () => {
-    render(<Contact />)
+describe('Contact Us Page Test Cases', () => {
+    it('Should load contact component', () => {
+        render(<Contact />);
+    
+        const heading = screen.getByRole("heading");
+    
+        // Assertion
+        expect(heading).toBeInTheDocument();
+    });
+    
+    it('Should load button inside contact component', () => {
+        render(<Contact />)
+    
+        const button = screen.getByText("Submit");
+    
+        // Assertion
+        expect(button).toBeInTheDocument();
+    });
+    
+    it('Should load input box inside contact component', () => {
+        render(<Contact />)
+    
+        const input = screen.getByPlaceholderText("name");
+    
+        // Assertion
+        expect(input).toBeInTheDocument();
+    });
+    
+    it('Should load 2 input boxes inside contact component', () => {
+        render(<Contact />);
+    
+        const inputBoxes = screen.getAllByRole('textbox');
+    
+        expect(inputBoxes.length).toBe(2);
+    });
+})
 
-    const heading = screen.getByRole("heading");
 
-    // Assertion
-    expect(heading).toBeInTheDocument();
-});
+// test('Should load contact component', () => {
+//     render(<Contact />)
 
-test('Should load button inside contact component', () => {
-    render(<Contact />)
+//     const heading = screen.getByRole("heading");
 
-    const button = screen.getByText("Submit");
+//     // Assertion
+//     expect(heading).toBeInTheDocument();
+// });
 
-    // Assertion
-    expect(button).toBeInTheDocument();
-});
+// test('Should load button inside contact component', () => {
+//     render(<Contact />)
 
-test('Should load input box inside contact component', () => {
-    render(<Contact />)
+//     const button = screen.getByText("Submit");
 
-    const input = screen.getByPlaceholderText("name");
+//     // Assertion
+//     expect(button).toBeInTheDocument();
+// });
 
-    // Assertion
-    expect(input).toBeInTheDocument();
-});
+// test('Should load input box inside contact component', () => {
+//     render(<Contact />)
 
-test('Should load 2 input boxes inside contact component', () => {
-    render(<Contact />);
+//     const input = screen.getByPlaceholderText("name");
 
-    const inputBoxes = screen.getAllByRole('textbox');
+//     // Assertion
+//     expect(input).toBeInTheDocument();
+// });
 
-    expect(inputBoxes.length).toBe(2);
-});
+// test('Should load 2 input boxes inside contact component', () => {
+//     render(<Contact />);
+
+//     const inputBoxes = screen.getAllByRole('textbox');
+
+//     expect(inputBoxes.length).toBe(2);
+// });
